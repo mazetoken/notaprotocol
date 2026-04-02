@@ -1,0 +1,69 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #09090f;
+  --surface: #0e0e18;
+  --surface2: #141420;
+  --border: #1c1c2e;
+  --border-hi: #2a2a42;
+  --accent: #00e5a0;
+  --accent-dim: rgba(0, 229, 160, 0.12);
+  --accent2: #7c6af7;
+  --accent3: #f7c948;
+  --text: #e2e2f0;
+  --text-dim: #7878a0;
+  --text-dimmer: #3c3c58;
+  --red: #ff5757;
+  --red-dim: rgba(255, 87, 87, 0.1);
+  --mono: 'Courier New', Courier, monospace;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle scanlines */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+button { cursor: pointer; font-family: var(--sans); }
+input, textarea { font-family: var(--mono); }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 2px; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0,229,160,0.2); }
+  50%       { box-shadow: 0 0 24px rgba(0,229,160,0.5); }
+}
+@keyframes dot-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
